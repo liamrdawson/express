@@ -7,8 +7,8 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/hello', (req, res) => {
-    res.send(`<h1>Hello, is it me you're coding for!?</h1>`);
+app.get('/cards', (req, res) => {
+    res.render(`card`, { prompt: "What is Liam's favourite programming language?", hint: "It rhymes with lava crypt" });
 });
 
 app.listen(3000, () => {
