@@ -25,6 +25,11 @@ app.use( (req, res, next)=>{
     next();
 });
 
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.render(`error`, err);
+});
+
 
 
 app.get('/', (req, res) => {
