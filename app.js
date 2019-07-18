@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
   
-
+app.use(bodyParser.urlencoded({ extended: false}));
 app.set(`view engine`, `pug`);
 
 app.get('/', (req, res) => {
@@ -18,7 +19,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.post('/hello', (req, res) => {
-    res.render(`hello`);
+    res.render(`hello`, { name: req.body.username });
 });
 
 app.listen(3000, () => {
