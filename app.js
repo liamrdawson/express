@@ -4,11 +4,26 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false}));
 
 
+
 app.set(`view engine`, `pug`);
+
+
+
+app.use( (req, res, next)=>{
+    console.log(`One`);
+    next();
+});
+
+app.use( (req, res, next)=>{
+    console.log(`Two`);
+    next();
+});
+
 
 
 app.get('/', (req, res) => {
@@ -35,6 +50,7 @@ app.get('/hello', (req, res) => {
 });
 
 
+
 app.post('/hello', (req, res) => {
     res.cookie(`username`, req.body.username);
     res.redirect(`/`);
@@ -44,6 +60,7 @@ app.post('/goodbye', (req, res) => {
     res.clearCookie('username');
     res.redirect('/hello');
 });
+
 
 
 app.listen(3000, () => {
