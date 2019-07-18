@@ -5,8 +5,8 @@ const app = express();
 
 
 
-app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(cookieParser());
 
 
 
@@ -16,7 +16,8 @@ app.set(`view engine`, `pug`);
 
 app.use( (req, res, next)=>{
     console.log(`Hello`);
-    next();
+    const err = new Error(`Oh dammit!!`);
+    next(err);
 });
 
 app.use( (req, res, next)=>{
