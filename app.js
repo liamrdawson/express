@@ -9,6 +9,9 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
 
 
+const routes = require(`./routes`);
+
+app.use(routes);
 
 app.set(`view engine`, `pug`);
 
@@ -36,8 +39,6 @@ app.get('/hello', (req, res) => {
         res.render('hello');
     }
 });
-
-
 
 app.post('/hello', (req, res) => {
     res.cookie(`username`, req.body.username);
