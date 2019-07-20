@@ -17,6 +17,10 @@ router.get('/:id', (req, res) => {
 
     const templateData = { id, text };
 
+    if (!side) {
+        res.redirect(`/cards/${id}?side=question`);
+    }
+
     if (side === `question`) {
         templateData.hint = hint;
         templateData.sideToShow = `answer`;
@@ -24,7 +28,7 @@ router.get('/:id', (req, res) => {
     } else if (side === `answer`) {
         templateData.sideToShow = `question`;
         templateData.sideToShowDisplay = `Question`;
-    }
+    } 
 
     res.render('card', templateData);
 });
