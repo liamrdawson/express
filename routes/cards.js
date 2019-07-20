@@ -1,8 +1,12 @@
-const express = require(`express`);
-const router = express.Router();
+const express   = require(`express`);
+const router    = express.Router();
+const { data }  =  require(`../data/flashcardData.json`);
+const { cards } = data;
 
 router.get('/', (req, res) => {
-    res.render(`card`, { prompt: "What is Liam's favourite programming language?", hint: "It rhymes with lava crypt" });
+    res.render(`card`, { 
+        prompt: cards[0].question, 
+        hint: cards[0].hint });
 });
 
 module.exports = router;
