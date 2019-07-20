@@ -11,10 +11,6 @@ router.get('/', (req, res) => {
     
 });
 
-router.get('/cards', (req, res) => {
-    res.render(`card`, { prompt: "What is Liam's favourite programming language?", hint: "It rhymes with lava crypt" });
-});
-
 router.get('/hello', (req, res) => {
     const name = req.cookies.username;
     if (name) {
