@@ -1,6 +1,9 @@
 extends layout
 
-block content
-    h1= error.message
-    h2= error.status
-    pre= error.stack
+block main
+    h1= `${error.message} - Status: ${error.stauts}`
+    img.desk-items(src="/static/img.desk.svg")
+    a.button-primary-small(href='/') Go Home
+    .paper
+        pre.stack-trace= error.stack
+    .tear
